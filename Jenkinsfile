@@ -21,5 +21,25 @@ pipeline
                }
             }  
         }
+		stage ('Test')
+		{
+            steps
+            {
+               withMaven(jdk: 'local-jdk', maven: 'local-maven') 
+               {
+                  sh 'mvn test'
+               }
+            }  
+        }
+		stage ('Build my job')
+		{
+            steps
+            {
+               withMaven(jdk: 'local-jdk', maven: 'local-maven') 
+               {
+                  sh 'mvn package'
+               }
+            }  
+        }
    }
 }
