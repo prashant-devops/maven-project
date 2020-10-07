@@ -17,7 +17,7 @@ pipeline
             {
                withMaven(jdk: 'local-jdk', maven: 'local-maven') 
                {
-                  sh 'mnv compile'
+                  sh 'mvn compile'
                }
             }  
         }
