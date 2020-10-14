@@ -35,11 +35,11 @@ pipeline
 		{
             steps
             {
-               withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6'') 
-               {
-					withSonarQubeEnv(credentialsId: 'Sonar') 
-					{
-						sh 'mvn clean sonar:sonar package'
+		    withSonarQubeEnv('Sonar') 
+			{
+			       withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6'') 
+			       {
+					sh 'mvn clean sonar:sonar package'
 					}
                }
             }  
