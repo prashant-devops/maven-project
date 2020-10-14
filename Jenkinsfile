@@ -15,7 +15,7 @@ pipeline
         {
             steps
             {
-               withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6'') 
+               withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6') 
                {
                   sh 'mvn compile'
                }
@@ -25,7 +25,7 @@ pipeline
 		{
             steps
             {
-               withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6'') 
+               withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6') 
                {
                   sh 'mvn test'
                }
@@ -35,11 +35,12 @@ pipeline
 		{
             steps
             {
-		    withSonarQubeEnv('Sonar') 
-			{
-			       withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6'') 
-			       {
-					sh 'mvn clean sonar:sonar package'
+				withSonarQubeEnv('Sonar') 
+				{
+					withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6') 
+					{
+					
+						sh 'mvn clean sonar:sonar package'
 					}
                }
             }  
