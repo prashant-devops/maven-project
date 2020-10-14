@@ -15,7 +15,7 @@ pipeline
         {
             steps
             {
-               withMaven(jdk: 'local-jdk', maven: 'local-maven') 
+               withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6'') 
                {
                   sh 'mvn compile'
                }
@@ -25,7 +25,7 @@ pipeline
 		{
             steps
             {
-               withMaven(jdk: 'local-jdk', maven: 'local-maven') 
+               withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6'') 
                {
                   sh 'mvn test'
                }
@@ -35,7 +35,7 @@ pipeline
 		{
             steps
             {
-               withMaven(jdk: 'local-jdk', maven: 'local-maven') 
+               withMaven(jdk: 'local-jdk-11', maven: 'local-maven-3.6'') 
                {
                   sh 'mvn package'
                }
@@ -47,7 +47,7 @@ pipeline
             {
                sshagent(['deploy-tomcat']) 
 				{
-					sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@13.235.132.119:/var/lib/tomcat/webapps'
+					sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@13.127.9.171:/var/lib/tomcat/webapps'
 				}
             }  
         }
